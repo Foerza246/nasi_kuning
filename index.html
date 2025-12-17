@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jualan Nasi Kuning - Enak dan Murah</title>
+    <link rel="stylesheet" href="assets/styles.css"> <!-- Link ke file CSS eksternal -->
+</head>
+<body>
+    <header>
+        <h1>Nasi Kuning zulfiansyah</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#products">Menu</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#contact">Pesan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="slides">
+            <div class="slide">Nasi Kuning Terlezat!</div>
+            <div class="slide">Harga Murah, Kualitas Terbaik</div>
+            <div class="slide">Pesan Sekarang!</div>
+        </div>
+    </section>
+
+    <section id="products" class="products">
+        <div class="product">
+            <img src="assets/nasi kuning spesial.jpeg" alt="Nasi Kuning Spesial" width="300">
+            <h3>Nasi Kuning Spesial</h3>
+            <p>Rp 15.000 - Dengan ayam, telur, dan sambal.</p>
+            <button onclick="addToCart('Nasi Kuning Spesial', 15000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="assets/Nasi Kuning serdehana.jpeg" alt="Nasi Kuning biasa" width="300">
+            <h3>Nasi Kuning Biasa</h3>
+            <p>Rp 10.000 - Nasi kuning sederhana.</p>
+            <button onclick="addToCart('Nasi Kuning Biasa', 10000)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="assets/nasi kuning paket keluarga.jpeg" alt="paket Keluarga" width="300">
+            <h3>Paket Keluarga</h3>
+            <p>Rp 50.000 - Untuk 4 orang.</p>
+            <button onclick="addToCart('Paket Keluarga', 50000)">Tambah ke Keranjang</button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Tentang Kami</h2>
+        <p>Kami menyediakan nasi kuning yang enak, sehat, dan dibuat dengan bahan berkualitas. Pesan sekarang dan rasakan kelezatannya!</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Pesan Nasi Kuning</h2>
+        <form id="orderForm" method="POST" action="order.php">
+            <input type="text" id="name" name="name" placeholder="Nama Anda" required>
+            <input type="tel" id="phone" name="phone" placeholder="Nomor HP" required>
+            <select id="product" name="product" required>
+                <option value="">Pilih Produk</option>
+                <option value="Nasi Kuning Spesial">Nasi Kuning Spesial - Rp 15.000</option>
+                <option value="Nasi Kuning Biasa">Nasi Kuning Biasa - Rp 10.000</option>
+                <option value="Paket Keluarga">Paket Keluarga - Rp 50.000</option>
+            </select>
+            <input type="number" id="quantity" name="quantity" placeholder="Jumlah" min="1" required>
+            <textarea id="address" name="address" placeholder="Alamat Pengiriman" required></textarea>
+            <button type="submit">Pesan Sekarang</button>
+        </form>
+        <div id="cart">Keranjang: <span id="cartItems">Kosong</span> | Total: Rp <span id="totalPrice">0</span></div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3>Pesanan Berhasil!</h3>
+            <p>Terima kasih atas pesanan Anda. Kami akan segera proses.</p>
+            <button onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Nasi Kuning zulfiansyah. Semua hak dilindungi.</p>
+    </footer>
+
+    <script src="script.js"></script> <!-- Link ke file JS eksternal -->
+</body>
+</html>
