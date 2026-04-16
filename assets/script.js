@@ -1,34 +1,40 @@
-// JavaScript untuk efek dan interaktivitas
+// Keranjang belanja
 let cart = [];
-let total = 0;
+let totalPrice = 0;
 
-// Fungsi tambah ke keranjang
-function addToCart(item, price) {
-    cart.push({ item, price });
-    total += price;
+// Tambah produk ke keranjang
+function addToCart(productName, price) {
+    cart.push({ productName, price });
+    totalPrice += price;
     updateCart();
 }
 
 // Update tampilan keranjang
 function updateCart() {
-    document.getElementById('cartItems').textContent = cart.length + ' item';
-    document.getElementById('totalPrice').textContent = total.toLocaleString();
+    document.getElementById('cartItems').textContent = `${cart.length} item`;
+    document.getElementById('totalPrice').textContent = totalPrice.toLocaleString();
+}
+
+// Reset keranjang setelah pesanan berhasil
+function resetCart() {
+    cart = [];
+    totalPrice = 0;
+    updateCart();
 }
 
 // Validasi dan submit form
 document.getElementById('orderForm').addEventListener('submit', function(e) {
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
     const product = document.getElementById('product').value;
     const quantity = document.getElementById('quantity').value;
-    const address = document.getElementById('address').value;
+    const address = document.getElementById('address').value.trim();
+
     if (name && phone && product && quantity && address) {
         document.getElementById('modal').style.display = 'flex';
-        // Reset form
         this.reset();
-        cart = [];
-        total = 0;
-        updateCart();
+        resetCart(); // gunakan fungsi modular
     } else {
         alert('Harap isi semua field!');
     }
@@ -39,13 +45,13 @@ function closeModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
-// Efek fade-in saat scroll (untuk produk)
+// Efek fade-in saat scroll
 window.addEventListener('scroll', function() {
-    const products = document.querySelectorAll('.product');
-    products.forEach(product => {
-        const rect = product.getBoundingClientRect();
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
         if (rect.top < window.innerHeight) {
-            product.style.animationDelay = '0s';
+            card.style.animationDelay = '0s';
         }
     });
 });
